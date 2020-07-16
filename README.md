@@ -1,0 +1,4 @@
+# GNN models
+
+* GCN
+* GAT
