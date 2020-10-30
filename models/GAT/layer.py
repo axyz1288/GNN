@@ -26,7 +26,7 @@ class GATConv(nn.Module):
         # create adjacent matrix
         n_node, n_feature = (h.shape[1], h.shape[2])
         a = h.repeat(1, n_node, 1).view(-1, n_node, n_node, n_feature)
-        a = torch.cat([a.transpose(1, 2), a], dim=-1)
+        a = torch.cat([a, a.transpose(1, 2)], dim=-1)
         
         # replace nonzero to e    
         e = self.act1(self.a(a)).squeeze(-1)
